@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\post;
-use App\Http\Requests\StorepostRequest;
-use App\Http\Requests\UpdatepostRequest;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -13,15 +12,22 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return post::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorepostRequest $request)
+    public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required',
+        ]);
+
+        $post = Post::create($fields);
+
+        return ['post' => $post];
     }
 
     /**
@@ -35,7 +41,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatepostRequest $request, post $post)
+    public function update(Request $request, post $post)
     {
         //
     }
