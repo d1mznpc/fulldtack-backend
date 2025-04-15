@@ -10,7 +10,7 @@ class post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     public function posts()
     {
-        return $this->hasMany(post::class);
+        return $this->hasMany(User::class);
     }
 
     protected $fillable = [
