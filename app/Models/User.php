@@ -13,7 +13,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
 
-    public function post()
+    public function posts()
     {
         return $this->hasMany(post::class);
     }

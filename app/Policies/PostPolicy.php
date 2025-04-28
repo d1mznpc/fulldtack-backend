@@ -11,6 +11,12 @@ class PostPolicy
     /**
      * Determine whether the user can view any models.
      */
+    public function modify(User $user, post $post): Response{
+        return $user->id === $post->user_id
+            ? Response::allow()
+            : Response::deny('You do not own this post.');
+    }
+
     public function viewAny(User $user): bool
     {
         return false;
