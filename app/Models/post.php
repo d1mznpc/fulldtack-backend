@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
-    public function posts()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     protected $fillable = [
